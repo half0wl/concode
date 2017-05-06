@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import signals
 from django.contrib.auth.models import User
 
 
@@ -11,8 +12,16 @@ PROJECT_STAGES = (
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='user')
     bio = models.TextField(default='', blank=True)
+
+    def create_profile(sender, **kwargs):
+        user = kwargs['instance']
+        if kwargs['created']:
+            user_profile = UserProfile(user=user, bio='Hello!')
+            user_profile.save()
+
+    signals.post_save.connect(create_profile, sender=User)
 
 
 class Project(models.Model):
