@@ -10,6 +10,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'rest_framework',
+    'rest_framework.authtoken',
+    'social_django',
+    'rest_social_auth',
+
+    'core',
 ]
 
 MIDDLEWARE = [
@@ -41,6 +48,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'concode.wsgi.application'
+
+
+# Authentication
+
+SOCIAL_AUTH_GITHUB_KEY = 'f011549ce875a82ec3a1'
+SOCIAL_AUTH_GITHUB_SECRET = os.environ['GITHUB_CLIENT_SECRET']
+REST_SOCIAL_OAUTH_REDIRECT_URI = '/auth/callback'
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+)
 
 
 # Internationalization
