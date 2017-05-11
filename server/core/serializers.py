@@ -10,3 +10,13 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'first_name', 'last_name', 'username', 'bio')
+        read_only_fields = ('id', 'first_name', 'last_name', 'username')
+        write_only_fields = ('bio')
+
+    def update(self, instance, validated_data):
+        '''
+        Only save changes to `instance.profile`.
+        '''
+        instance.profile.bio = validated_data['profile']['bio']
+        instance.profile.save()
+        return instance

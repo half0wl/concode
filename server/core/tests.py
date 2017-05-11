@@ -31,8 +31,24 @@ class UserViewTestCase(APITestCase):
         self.client.force_authenticate(user=test_user)
 
     def test_can_retrieve_all_users(self):
-        resp = self.client.get(reverse('users'))
+        resp = self.client.get(reverse('user-list'))
 
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         self.assertEqual(resp.data[0]['username'], self.username)
         self.assertEqual(resp.data[0]['bio'], 'Hello!')
+
+    def test_can_retrieve_single_user(self):
+        uri = reverse('user-detail', kwargs={'username': self.username})
+        resp = self.client.get(uri)
+
+        self.assertEqual(resp.status_code, status.HTTP_200_OK)
+        self.assertEqual(resp.data['username'], self.username)
+        self.assertEqual(resp.data['bio'], 'Hello!')
+
+    def test_can_update_profile(self):
+        uri = reverse('user-detail', kwargs={'username': self.username})
+        data = {'bio': 'Updating bio for test user!'}
+        resp = self.client.patch(uri, data)
+
+        self.assertEqual(resp.status_code, status.HTTP_200_OK)
+        self.assertEqual(resp.data['bio'], data['bio'])
