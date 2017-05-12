@@ -13,10 +13,10 @@ Vue.use(Bourgeon, {
 Vue.http.options.root = 'https://api-demo.websanova.com/api/v1'
 Vue.router = new VueRouter()
 
-Vue.use(require('@websanova/vue-auth'), {
-  auth: require('@websanova/vue-auth/drivers/auth/bearer.js'),
-  http: require('@websanova/vue-auth/drivers/http/vue-resource.1.x.js'),
-  router: require('@websanova/vue-auth/drivers/router/vue-router.2.x.js'),
+Vue.use(require('vue-auth'), {
+  auth: require('vue-auth/drivers/auth/bearer.js'),
+  http: require('vue-auth/drivers/http/vue-resource.1.x.js'),
+  router: require('vue-auth/drivers/router/vue-router.2.x.js'),
   rolesVar: 'type'
 })
 
