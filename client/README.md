@@ -1,4 +1,4 @@
-# concode
+# Concode
 
 > A Vue.js project
 
