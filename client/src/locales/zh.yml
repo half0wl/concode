@@ -1,0 +1,13 @@
+messages:
+  welcome: 歡迎使用您的Concode應用程式！
+  hello: 你好，{name}！
+  counter: 你已經點擊了{n}次按鈕 | 你已經點擊了{n}次按鈕
+buttons:
+  home: 主頁
+  hello: 你好
+locales:
+  zh: 中文
+  fr: 法語
+  en: 英語
+links:
+  login: 登錄

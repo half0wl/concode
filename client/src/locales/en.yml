@@ -1,0 +1,13 @@
+messages:
+  welcome: Welcome to your Concode app!
+  hello: Hello {name}!
+  counter: You clicked this button {n} time | You clicked this button {n} times
+buttons:
+  home: Home
+  hello: Hello
+locales:
+  zh: Chinese
+  fr: French
+  en: English
+links:
+  login: Log in
