@@ -12,8 +12,11 @@ PROJECT_STAGES = (
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='user')
+    user = models.OneToOneField(User, related_name='profile')
     bio = models.TextField(default='', blank=True)
+
+    def __str__(self):
+        return self.user.username
 
     def create_profile(sender, **kwargs):
         user = kwargs['instance']
