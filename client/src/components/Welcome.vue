@@ -4,7 +4,7 @@
       {{ $t('messages.welcome') }}
     </p>
     <p>
-      <router-link to="/hello/bourgeon">{{ $t('buttons.hello') }}</router-link>
+      <router-link to="/hello/concode">{{ $t('buttons.hello') }}</router-link>
     </p>
   </div>
 </template>
