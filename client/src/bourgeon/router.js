@@ -7,6 +7,8 @@ export default {
   install (Vue) {
     const router = new VueRouter({
       routes,
+      hashbang: false,
+      linkActiveClass: 'active',
       mode: 'history'
     })
 

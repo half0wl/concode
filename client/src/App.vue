@@ -10,8 +10,8 @@
     <div>
       <button @click="increment">{{ $tc('messages.counter', countPlural, { n: $store.state.count }) }}</button>
     </div>
-    <router-link v-if="!$auth.check()" to="/hello/concode">{{ $t('links.login') }}</router-link>
-    <a v-if="$auth.check()" v-on:click="$auth.logout()">logout</a>
+    <router-link v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
+    <a v-if="$auth.check()" v-on:click="logout()">logout</a>
   </div>
 </template>
 
@@ -20,6 +20,11 @@ import store from 'store'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   store,
+  data () {
+    return {
+      context: 'app context'
+    }
+  },
   computed: mapGetters([
     'countPlural'
   ]),
@@ -30,6 +35,17 @@ export default {
     onLangClick (lang) {
       this.setLang(lang) // mixin method
       this.increment() // store action
+    },
+    logout () {
+      this.$auth.logout({
+        makeRequest: true,
+        success () {
+          console.log('success ' + this.context)
+        },
+        error () {
+          console.log('error ' + this.context)
+        }
+      })
     }
   }
 }
