@@ -11,3 +11,8 @@ locales:
   en: English
 links:
   login: Log in
+errors:
+  not-found: Not Found
+  forbidden: Forbidden
+  teapot: I’m a teapot
+  bad-gateway: Bad Gateway

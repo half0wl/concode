@@ -11,3 +11,8 @@ locales:
   en: Anglais
 links:
   login: S’identifier
+errors:
+  not-found: Page non trouvée
+  forbidden: Accès refusé
+  teapot: Je suis une théière
+  bad-gateway: Mauvaise réponse

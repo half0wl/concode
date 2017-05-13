@@ -11,3 +11,8 @@ locales:
   en: 英語
 links:
   login: 登錄
+errors:
+  not-found: 找不到網頁
+  forbidden: 拒絕訪問
+  teapot: 我是一個茶壺
+  bad-gateway: 錯誤的網關
