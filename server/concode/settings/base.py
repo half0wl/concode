@@ -50,6 +50,16 @@ TEMPLATES = [
 WSGI_APPLICATION = 'concode.wsgi.application'
 
 
+# Databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
+
 # Authentication
 
 SOCIAL_AUTH_GITHUB_KEY = 'f011549ce875a82ec3a1'
