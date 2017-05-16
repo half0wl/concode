@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <img class="logo" src="./assets/logo.png" alt="Concode logo">
+    <a id="skip-to-content" href="#content">skip to main content</a>
     <router-view></router-view>
     <div>
       <h3>Change language</h3>

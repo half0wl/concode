@@ -1,5 +1,5 @@
 <template>
-  <div class="login">
+  <div id="content" class="login">
     <h1>{{ $t('links.login') }}</h1>
     <div v-show="!code || !type">
       <button v-on:click="social('github')">Sign in with GitHub</button>
