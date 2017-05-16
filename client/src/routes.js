@@ -6,14 +6,16 @@ export default [
   {
     path: '/',
     component: WelcomeComponent
-  },
-  {
+  }, {
     path: '/login',
     name: 'login',
     meta: {auth: false},
     component: LoginComponent
-  },
-  {
+  }, {
+    path: '/login/:type',
+    name: 'oauth2-type',
+    component: LoginComponent
+  }, {
     path: '/hello/:name',
     component: HelloComponent
   }, {

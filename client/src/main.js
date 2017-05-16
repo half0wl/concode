@@ -11,14 +11,22 @@ Vue.use(Bourgeon, {
   locales: ['en', 'zh', 'fr']
 })
 
-Vue.http.options.root = 'https://api-demo.websanova.com/api/v1'
+Vue.http.options.root = 'https://concode-api.herokuapp.com/auth/social/jwt/'
 Vue.router = new VueRouter()
 
 Vue.use(require('vue-auth'), {
   auth: require('vue-auth/drivers/auth/bearer.js'),
   http: require('vue-auth/drivers/http/vue-resource.1.x.js'),
   router: require('vue-auth/drivers/router/vue-router.2.x.js'),
-  rolesVar: 'type'
+  rolesVar: 'type',
+  githubData: { url: 'auth/callback', method: 'POST', redirect: '/' },
+  githubOauth2Data: {
+    url: 'https://github.com/login/oauth/authorize',
+    // redirect: function () { return this.options.getUrl() + '/login/github' },
+    redirect: function () { return 'https://concode-api.herokuapp.com/authorization' },
+    clientId: 'f011549ce875a82ec3a1',
+    scope: 'email'
+  }
 })
 
 /* eslint-disable no-new */
