@@ -11,7 +11,7 @@ Vue.use(Bourgeon, {
   locales: ['en', 'zh', 'fr']
 })
 
-Vue.http.options.root = 'https://concode-api.herokuapp.com/auth/social/jwt/'
+Vue.http.options.root = 'https://concode-api.herokuapp.com/'
 Vue.router = new VueRouter()
 
 Vue.use(require('vue-auth'), {
@@ -19,6 +19,7 @@ Vue.use(require('vue-auth'), {
   http: require('vue-auth/drivers/http/vue-resource.1.x.js'),
   router: require('vue-auth/drivers/router/vue-router.2.x.js'),
   rolesVar: 'type',
+  loginData: { url: 'auth/social/jwt', method: 'POST', redirect: '/', fetchUser: true },
   githubData: { url: 'auth/callback', method: 'POST', redirect: '/' },
   githubOauth2Data: {
     url: 'https://github.com/login/oauth/authorize',
