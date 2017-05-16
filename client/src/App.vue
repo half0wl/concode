@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png">
+    <img class="logo" src="./assets/logo.png" alt="Concode logo">
     <router-view></router-view>
     <div>
       <h3>Change language</h3>
