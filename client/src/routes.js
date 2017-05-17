@@ -34,5 +34,8 @@ export default [
     path: '/teapot',
     name: 'error-418',
     component: require('./components/pages/418.vue')
+  }, {
+    path: '*',
+    component: require('./components/pages/404.vue')
   }
 ]
