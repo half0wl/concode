@@ -1,4 +1,3 @@
-// jshint esversion:6
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
@@ -11,7 +10,7 @@ Vue.use(Bourgeon, {
   locales: ['en', 'zh', 'fr']
 })
 
-Vue.http.options.root = 'https://concode-api.herokuapp.com/'
+Vue.http.options.root = 'https://concode-api.herokuapp.com'
 Vue.router = new VueRouter()
 
 Vue.use(require('vue-auth'), {
@@ -19,16 +18,19 @@ Vue.use(require('vue-auth'), {
   http: require('vue-auth/drivers/http/vue-resource.1.x.js'),
   router: require('vue-auth/drivers/router/vue-router.2.x.js'),
   rolesVar: 'type',
-  loginData: { url: 'auth/social/jwt', method: 'POST', redirect: '/', fetchUser: true },
-  githubData: { url: 'auth/callback', method: 'POST', redirect: '/' },
+  loginData: { url: 'auth/callback', method: 'POST', redirect: '/', fetchUser: false },
+  fetchData: {url: 'authorization', method: 'GET'},
+  githubData: { url: 'auth/social/jwt/', method: 'POST', redirect: '/' },
   githubOauth2Data: {
     url: 'https://github.com/login/oauth/authorize',
-    // redirect: function () { return this.options.getUrl() + '/login/github' },
-    redirect: function () { return 'https://concode-api.herokuapp.com/authorization' },
+    redirect: function () { return this.options.getUrl() + '/authorization' },
+    // redirect: function () { return 'https://concode-api.herokuapp.com/authorization' },
     clientId: 'f011549ce875a82ec3a1',
     scope: 'email'
   }
 })
+
+App.router = Vue.router
 
 /* eslint-disable no-new */
 new Vue({

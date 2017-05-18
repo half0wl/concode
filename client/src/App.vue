@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png">
+    <img class="logo" src="./assets/logo.png" alt="Concode logo">
+    <a id="skip-to-content" href="#content">skip to main content</a>
     <router-view></router-view>
     <div>
       <h3>Change language</h3>
@@ -10,8 +11,8 @@
     <div>
       <button @click="increment">{{ $tc('messages.counter', countPlural, { n: $store.state.count }) }}</button>
     </div>
-    <router-link v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
-    <a v-if="$auth.check()" v-on:click="logout()">logout</a>
+    <router-link class="link" v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
+    <a class="link" v-if="$auth.check()" v-on:click="logout()">logout</a>
   </div>
 </template>
 

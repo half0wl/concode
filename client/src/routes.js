@@ -1,6 +1,7 @@
 import WelcomeComponent from 'components/Welcome'
 import LoginComponent from 'components/Login'
 import HelloComponent from 'components/Hello'
+import AuthorizationComponent from 'components/Authorization'
 
 export default [
   {
@@ -15,6 +16,9 @@ export default [
     path: '/login/:type',
     name: 'oauth2-type',
     component: LoginComponent
+  }, {
+    path: '/authorization',
+    component: AuthorizationComponent
   }, {
     path: '/hello/:name',
     component: HelloComponent
@@ -34,5 +38,8 @@ export default [
     path: '/teapot',
     name: 'error-418',
     component: require('./components/pages/418.vue')
+  }, {
+    path: '*',
+    component: require('./components/pages/404.vue')
   }
 ]

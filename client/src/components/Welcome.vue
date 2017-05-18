@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div id="content">
     <p>
       {{ $t('messages.welcome') }}
     </p>
     <p>
-      <router-link to="/hello/concode">{{ $t('buttons.hello') }}</router-link>
+      <router-link class="link" to="/hello/concode">{{ $t('buttons.hello') }}</router-link>
     </p>
   </div>
 </template>
