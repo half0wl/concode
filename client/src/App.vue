@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img class="logo" src="./assets/logo.png" alt="Concode logo">
+    <router-link to="/"><img class="logo" src="./assets/logo.png" alt="Concode logo"></router-link>
     <a id="skip-to-content" href="#content">skip to main content</a>
     <router-view></router-view>
     <div>
