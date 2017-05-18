@@ -20,7 +20,7 @@ Vue.use(require('vue-auth'), {
   rolesVar: 'type',
   loginData: { url: 'auth/callback', method: 'POST', redirect: '/', fetchUser: false },
   fetchData: {url: 'authorization', method: 'GET'},
-  githubData: { url: 'auth/social/jwt/', method: 'POST', redirect: '/' },
+  githubData: { url: 'auth/social/jwt/?provider=github', method: 'POST', redirect: '/' },
   githubOauth2Data: {
     url: 'https://github.com/login/oauth/authorize',
     redirect: function () { return this.options.getUrl() + '/authorization' },
