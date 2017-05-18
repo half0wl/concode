@@ -2,7 +2,7 @@
   <div id="content" class="hello">
     <h1>{{ msg }}</h1>
     <p>
-      <router-link to="/">{{ $t('buttons.home') }}</router-link>
+      <router-link class="link" to="/">{{ $t('buttons.home') }}</router-link>
     </p>
   </div>
 </template>
