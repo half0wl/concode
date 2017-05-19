@@ -1,7 +1,6 @@
 <template>
   <div id="app" v-if="$auth.ready()">
-    <router-link to="/"><img class="logo" src="./assets/logo.png" alt="Concode logo"></router-link>
-    <a id="skip-to-content" href="#content">skip to main content</a>
+    <AppHeader></AppHeader>
     <router-view></router-view>
     <div>
       <h3>Change language</h3>
@@ -12,19 +11,23 @@
       <button @click="increment">{{ $tc('messages.counter', countPlural, { n: $store.state.count }) }}</button>
     </div>
     <router-link class="link" v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
-    Hello {{ $auth.user().username }} | <a class="link" v-if="$auth.check()" v-on:click="logout()">{{ $t('links.logout') }}</a>
+    <span v-if="$auth.check()">Hello {{ $auth.user().username }} | <a class="link" v-on:click="logout()">{{ $t('links.logout') }}</a></span>
   </div>
 </template>
 
 <script>
 import store from 'store'
 import { mapActions, mapGetters } from 'vuex'
+import AppHeader from 'components/AppHeader'
 export default {
   store,
   data () {
     return {
       context: 'app context'
     }
+  },
+  components: {
+    AppHeader
   },
   computed: mapGetters([
     'countPlural'
@@ -39,8 +42,9 @@ export default {
     },
     logout () {
       this.$auth.logout({
-        makeRequest: true,
+        makeRequest: false,
         success () {
+          document.cookie = 'token=;expires=Thu, 01 Jan 1970 00:00:01 GMT;'
           console.log('success ' + this.context)
         },
         error () {
