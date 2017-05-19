@@ -11,6 +11,7 @@ locales:
   en: 英語
 links:
   login: 登錄
+  logout: 登出
 errors:
   not-found: 找不到網頁
   forbidden: 拒絕訪問

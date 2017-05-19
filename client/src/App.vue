@@ -12,7 +12,7 @@
       <button @click="increment">{{ $tc('messages.counter', countPlural, { n: $store.state.count }) }}</button>
     </div>
     <router-link class="link" v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
-    <a class="link" v-if="$auth.check()" v-on:click="logout()">logout</a>
+    <a class="link" v-if="$auth.check()" v-on:click="logout()">{{ $t('links.logout') }}</a>
   </div>
 </template>
 

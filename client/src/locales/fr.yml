@@ -11,6 +11,7 @@ locales:
   en: Anglais
 links:
   login: S’identifier
+  logout: Se déconnecter
 errors:
   not-found: Page non trouvée
   forbidden: Accès refusé
