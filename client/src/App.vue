@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" v-if="$auth.ready()">
     <router-link to="/"><img class="logo" src="./assets/logo.png" alt="Concode logo"></router-link>
     <a id="skip-to-content" href="#content">skip to main content</a>
     <router-view></router-view>
@@ -12,7 +12,7 @@
       <button @click="increment">{{ $tc('messages.counter', countPlural, { n: $store.state.count }) }}</button>
     </div>
     <router-link class="link" v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
-    <a class="link" v-if="$auth.check()" v-on:click="logout()">{{ $t('links.logout') }}</a>
+    Hello {{ $auth.user().username }} | <a class="link" v-if="$auth.check()" v-on:click="logout()">{{ $t('links.logout') }}</a>
   </div>
 </template>
 
@@ -48,6 +48,16 @@ export default {
         }
       })
     }
+  },
+  created: function fetch () {
+    this.$auth.fetch({
+      success () {
+        console.log('success ' + this.context)
+      },
+      error () {
+        console.log('error ' + this.context)
+      }
+    })
   }
 }
 </script>
