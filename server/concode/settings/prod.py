@@ -16,3 +16,11 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     )
 }
+
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    'concode-api.herokuapp.com',
+    'concode.herokuapp.com',
+    'localhost:8000',
+    '127.0.0.1:8000'
+)

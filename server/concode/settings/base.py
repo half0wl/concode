@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'social_django',
     'rest_social_auth',
+    'corsheaders',
 
     'core',
 ]
@@ -22,6 +23,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -64,7 +66,7 @@ DATABASES = {
 
 SOCIAL_AUTH_GITHUB_KEY = 'f011549ce875a82ec3a1'
 SOCIAL_AUTH_GITHUB_SECRET = os.environ['GITHUB_CLIENT_SECRET']
-REST_SOCIAL_OAUTH_REDIRECT_URI = '/authorization'
+REST_SOCIAL_OAUTH_ABSOLUTE_REDIRECT_URI = 'http://127.0.0.1:8000/authorization'
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
