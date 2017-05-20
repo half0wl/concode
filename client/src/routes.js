@@ -6,6 +6,7 @@ import AuthorizationComponent from 'components/Authorization'
 export default [
   {
     path: '/',
+    name: 'dashboard',
     component: WelcomeComponent
   }, {
     path: '/login',

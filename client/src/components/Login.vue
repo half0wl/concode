@@ -41,7 +41,7 @@ export default {
           res.status(400).send('Something went wrong')
         },
         redirect: {
-          name: 'home'
+          name: 'dashboard'
         }
       })
     }
