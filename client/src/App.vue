@@ -10,7 +10,7 @@
     <div>
       <button @click="increment">{{ $tc('messages.counter', countPlural, { n: $store.state.count }) }}</button>
     </div>
-    <router-link class="link" v-if="!$auth.check()" to="/login">{{ $t('links.login') }}</router-link>
+    <router-link class="link" v-if="!$auth.check()" to="/login/github">{{ $t('links.login') }}</router-link>
     <span v-if="$auth.check()">Hello {{ $auth.user().username }} | <a class="link" v-on:click="logout()">{{ $t('links.logout') }}</a></span>
   </div>
 </template>
@@ -66,18 +66,25 @@ export default {
 }
 </script>
 
-<style lang="stylus">
-@import "../node_modules/typus" // base styles
-@import "styles/theme"
+<style lang="scss">
+@import "styles/theme/index";
 
-body
-  +above(320px) // rupture
-    font-size 1.6rem
+html {
+  height: 100%;
+}
 
-#app
-  align() // jeet
-  text-align center
+body{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.icon-logo
-  margin-bottom 2.5rem
+#app {
+  text-align: center;
+}
+
+.icon-logo {
+  margin-bottom: 2.5rem;
+}
 </style>

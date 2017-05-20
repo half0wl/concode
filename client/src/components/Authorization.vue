@@ -15,10 +15,6 @@
                 <li><a v-on:click="networkDrop('other')" href="javascript:void(0);">Test network drop</a></li>
             </ul>
         </div>
-        <form v-on:submit.prevent="register()">
-            <input type="hidden" v-model="data.body.username">
-            <input type="hidden" v-model="data.body.password">
-        </form>
     </div>
 </template>
 
@@ -30,14 +26,7 @@ export default {
       code: this.$route.query.code,
       type: this.$route.params.type,
       error: null,
-      token: '',
-      data: {
-        body: {
-          username: '',
-          password: '',
-          avatar: null
-        }
-      }
+      token: ''
     }
   },
   methods: {
@@ -124,17 +113,17 @@ export default {
           console.log('Success!' + this.context)
           this.token = res.data.token
           document.getElementById('jwt').text = this.token
-          document.cookie = 'token=' + this.token
           if (this.storage) {
             console.log('localStorage enabled')
             this.storage.setItem('token', this.token)
           } else {
             console.log('localStorage disabled')
+            document.cookie = 'token=' + this.token
           }
         },
         error (res) {
-          console.log(this.error + ' ' + this.context + ' ' + res)
           this.error = res.data
+          console.log(this.error + ' ' + this.context + ' ' + res.data)
         },
         redirect: {name: 'account'}
         // etc
@@ -142,7 +131,7 @@ export default {
     }
     if (this.storage) {
       console.log('localStorage enabled')
-      this.storage.setItem('token', this.token)
+      this.storage.token = this.token
     } else {
       console.log('localStorage disabled')
     }
@@ -150,5 +139,5 @@ export default {
 }
 </script>
 
-<<style lang="stylus">
+<<style lang="scss">
 </style>

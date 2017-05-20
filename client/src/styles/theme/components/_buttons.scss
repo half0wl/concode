@@ -1,0 +1,17 @@
+button,
+button:active,
+button:focus {
+  border: 0;
+  background: $interactive-bg;
+  color: $interactive-color;
+  cursor: pointer;
+  margin: 0 5px;
+  transition: background $timing $easing;
+  &:disabled,
+  &:hover {
+    background: $interacted;
+  }
+  &:disabled {
+    cursor: default;
+  }
+}

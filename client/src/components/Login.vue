@@ -29,11 +29,19 @@ export default {
         params: {
           code: this.code
         },
+        body: {
+          provider: this.type,
+          code: this.code
+        },
         success: function (res) {
           console.log('success ' + this.context)
         },
         error: function (res) {
           console.log('error ' + this.context)
+          res.status(400).send('Something went wrong')
+        },
+        redirect: {
+          name: 'home'
         }
       })
     }
@@ -48,13 +56,18 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="stylus" scoped>
-h1
-  color accent
-form input[type]
-  display inline-block
-  width 100%
-[dir="ltr"] label
-  text-align left
+<style lang="scss">
+@import "./../styles/theme/variables";
+h1 {
+  color: $accent;
+}
+
+form input[type] {
+  display: inline-block;
+  width: 100%;
+}
+
+[dir="ltr"] label {
+  text-align: left;
+}
 </style>
