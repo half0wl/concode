@@ -20,3 +20,11 @@ class UserSerializer(serializers.ModelSerializer):
         instance.profile.bio = validated_data['profile']['bio']
         instance.profile.save()
         return instance
+
+
+class ProjectSerializer(serializers.ModelSerializer):
+ 
+    class Meta:
+        model = Project
+        fields = ('owner', 'created_on', 'stage', 'name', 'description',
+                  'collaborators')
