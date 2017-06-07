@@ -73,7 +73,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SOCIAL_AUTH_GITHUB_SCOPE = [
-    'email',
+    'user:email',
 ]
 
 REST_FRAMEWORK = {
