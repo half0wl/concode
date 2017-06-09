@@ -33,4 +33,9 @@ class Project(models.Model):
     stage = models.CharField(choices=PROJECT_STAGES, max_length=30)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    collaborators = models.ManyToManyField(User, related_name='Collaborators')
+    collaborators = models.ManyToManyField(User,
+                                           blank=True,
+                                           related_name='Collaborators')
+
+    def __str__(self):
+        return self.name
