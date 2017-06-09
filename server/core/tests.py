@@ -52,3 +52,37 @@ class UserViewTestCase(APITestCase):
 
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         self.assertEqual(resp.data['bio'], data['bio'])
+
+
+class ProjectViewTestCase(APITestCase):
+
+    def setUp(self):
+        self.username = 'test'
+        self.email = 't@t.co'
+        self.password = 'hunter2'
+        test_user = User(username=self.username,
+                         email=self.email,
+                         password=self.password)
+        test_user.save()
+
+        self.client.force_authenticate(user=test_user)
+
+    def test_can_create_project(self):
+        uri = reverse('project-list')
+        data = {
+            'name': 'Concode',
+            'description': 'Lorem Ipsum',
+            'stage': 'CONCEPT'
+        }
+        resp = self.client.post(uri, data)
+
+        self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(resp.data['name'], data['name'])
+        self.assertEqual(resp.data['description'], data['description'])
+        self.assertEqual(resp.data['stage'], data['stage'])
+
+    def test_can_retrieve_projects(self):
+        uri = reverse('project-list')
+        resp = self.client.get(uri)
+
+        self.assertEqual(resp.status_code, status.HTTP_200_OK)

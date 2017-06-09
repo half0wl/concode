@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProjectSerializer(serializers.ModelSerializer):
- 
+
     class Meta:
         model = Project
         fields = ('owner', 'created_on', 'stage', 'name', 'description',
